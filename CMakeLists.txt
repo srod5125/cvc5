@@ -724,7 +724,7 @@ install(EXPORT cvc5-targets
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cvc5)
 
 configure_package_config_file(
-  ${CMAKE_SOURCE_DIR}/cmake/cvc5Config.cmake.in
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cvc5Config.cmake.in
   ${CMAKE_BINARY_DIR}/cmake/cvc5Config.cmake
   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/cvc5
   PATH_VARS CMAKE_INSTALL_LIBDIR
