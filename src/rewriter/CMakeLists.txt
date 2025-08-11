@@ -38,12 +38,12 @@ set(REWRITE_OUTPUT_FILES
   rewrites.cpp
 )
 foreach(rewrite_in IN LISTS REWRITES_FILES REWRITES_FILES_EXPERT)
-  # NOTE: In CMake 3.20+, the `cmake_path` command can be used instead
+    # NOTE: In CMake 3.20+, the `cmake_path` command can be used instead
 
-  get_filename_component(rewrite_parent ${rewrite_in} DIRECTORY)
-  get_filename_component(rewrite_name ${rewrite_in} NAME)
-  get_filename_component(rewrite_dir ${rewrite_parent} NAME)
-  list(APPEND REWRITE_OUTPUT_FILES "rewrites-${rewrite_dir}-${rewrite_name}.cpp")
+    get_filename_component(rewrite_parent ${rewrite_in} DIRECTORY)
+    get_filename_component(rewrite_name ${rewrite_in} NAME)
+    get_filename_component(rewrite_dir ${rewrite_parent} NAME)
+    list(APPEND REWRITE_OUTPUT_FILES "rewrites-${rewrite_dir}-${rewrite_name}.cpp")
 endforeach()
 
 libcvc5_add_sources(GENERATED
@@ -80,8 +80,8 @@ add_custom_command(
       ${REWRITES_FILES_EXPERT}
       ${CMAKE_CURRENT_LIST_DIR}/theory_rewrites_template.cpp
       ${CMAKE_CURRENT_LIST_DIR}/rewrites_template.cpp
-      ${CMAKE_SOURCE_DIR}/src/api/cpp/cvc5_proof_rule_template.cpp
-      ${CMAKE_SOURCE_DIR}/include/cvc5/cvc5_proof_rule.h
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/api/cpp/cvc5_proof_rule_template.cpp
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/cvc5/cvc5_proof_rule.h
     COMMENT
       "Generating rewrites.{h,cpp}"
 )
