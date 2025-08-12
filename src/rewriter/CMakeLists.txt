@@ -63,13 +63,15 @@ list(APPEND LIBCVC5_GEN_SRCS
 
 set(LIBCVC5_GEN_SRCS ${LIBCVC5_GEN_SRCS} PARENT_SCOPE)
 
-message(STATUS "In cvc5 CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
-message(STATUS "In cvc5 PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
-message(STATUS "In cvc5 CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
-message(STATUS "In cvc5 PROJECT_BINARY_DIR: ${PROJECT_BINARY_DIR}")
-message(STATUS "In cvc5 CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
-message(STATUS "In cvc5 CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
-message(STATUS "In cvc5 CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+# In cvc5 CMAKE_SOURCE_DIR:         /home/stephen/diorama
+# In cvc5 PROJECT_SOURCE_DIR:       /home/stephen/diorama/build/_deps/cvc5-src
+# In cvc5 CMAKE_BINARY_DIR:         /home/stephen/diorama/build
+# In cvc5 PROJECT_BINARY_DIR:       /home/stephen/diorama/build/_deps/cvc5-build
+# In cvc5 CMAKE_CURRENT_SOURCE_DIR: /home/stephen/diorama/build/_deps/cvc5-src/src/rewriter
+# In cvc5 CMAKE_CURRENT_BINARY_DIR: /home/stephen/diorama/build/_deps/cvc5-build/src/rewriter
+# In cvc5 CMAKE_CURRENT_LIST_DIR:   /home/stephen/diorama/build/_deps/cvc5-src/src/rewriter
+#                                                              /_deps/cvc5-src/src/api/cpp/cvc5_proof_rule_template.cpp
+#                                                              /_deps/cvc5-src/include/cvc5/cvc5_proof_rule.h
 
 add_custom_command(
     OUTPUT
@@ -88,8 +90,8 @@ add_custom_command(
       ${REWRITES_FILES_EXPERT}
       ${CMAKE_CURRENT_LIST_DIR}/theory_rewrites_template.cpp
       ${CMAKE_CURRENT_LIST_DIR}/rewrites_template.cpp
-      ${CMAKE_CURRENT_SOURCE_DIR}/src/api/cpp/cvc5_proof_rule_template.cpp
-      ${CMAKE_CURRENT_SOURCE_DIR}/include/cvc5/cvc5_proof_rule.h
+      ${PROJECT_SOURCE_DIR}/src/api/cpp/cvc5_proof_rule_template.cpp
+      ${PROJECT_SOURCE_DIR}/include/cvc5/cvc5_proof_rule.h
     COMMENT
       "Generating rewrites.{h,cpp}"
 )
